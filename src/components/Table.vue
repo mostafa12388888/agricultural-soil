@@ -37,7 +37,6 @@
 </template>
 
 <script setup>
-import "./table.js";
 import { useUrlGlobal } from '../stores/urlStore'; // Ensure the path is correct
 
 // Define props

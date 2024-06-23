@@ -134,9 +134,8 @@ import Cookies from 'js-cookie';
             },{headers});
             console.log("result.data.error.email=>",result.data.message)
             if(result.status==201)
-            {
-              console.log(result.data)
-            }
+            this.$router.push('/admin')
+
           }catch(error){
             console.log('Validation error:', error.response.data.message);
 

@@ -3,7 +3,7 @@ import { defineStore } from 'pinia';
 
 export const useUrlGlobal = defineStore('Url', {
   state: () => ({
-    URL: '',
+    URL: 'http://127.0.0.1:8000',
   }),
   actions: {
     setURL(newVal) {

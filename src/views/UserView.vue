@@ -19,7 +19,6 @@ export default {
   },
 async mounted(){
   const token = Cookies.get('token');
-
   // Set Authorization header with token
   const headers = {
     Authorization: `Bearer ${token}`,
@@ -28,7 +27,6 @@ async mounted(){
   const result=await axios.get("/user",{headers})
   if(result.status==200){
     this.data=result.data;
-    console.log("data=",result.data)
   }
 }
 }
