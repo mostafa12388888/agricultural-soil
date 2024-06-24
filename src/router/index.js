@@ -7,6 +7,7 @@ import EditAdmin from '../views/admins/EditView.vue';
 import ShowUser from '../views/admins/ShowUserView.vue';
 import UserView from '../views/UserView.vue';
 import AddUser from '../views/users/AddView.vue';
+import PlantByUser from '../views/users/PlantByUserView.vue';
 import EditUser from '../views/users/EditView.vue';
 import PlantsView from '../views/PlantsView.vue';
 import Cookies from 'js-cookie';
@@ -58,6 +59,12 @@ const router = createRouter({
       path: '/users/add',
       name: 'AddUser',
       component: AddUser,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/user/:id',
+      name: 'PlantByUser',
+      component: PlantByUser,
       meta: { requiresAuth: true }
     },
     {

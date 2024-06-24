@@ -186,7 +186,6 @@ import axios from 'axios';
     // Handle error (e.g., show a message to the user)
   }
 }
-
 }}
 
 </script>

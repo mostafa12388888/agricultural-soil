@@ -194,6 +194,7 @@ export default {
             headers,
           });
           if (result.status === 200) {
+            console.log("data=>",result.data);
             imagePreview.value = null;
             emit("updatePlant", props.index, result.data);
           }

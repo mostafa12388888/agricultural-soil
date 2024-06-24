@@ -74,7 +74,6 @@
   import { required, email, minLength, maxLength, url } from '@vuelidate/validators';
 import axios from 'axios';
 import Cookies from 'js-cookie';
-
   export default {
     data() {
       return {
@@ -147,17 +146,7 @@ const headers = {
         // Server validation error handling
         console.log('Validation error:', error.response.data.message);
         this.emailError=error.response.data.message;
-        // Example: Update Vuelidate error state for email field
-        // this.v$.$setErrors({
-        //   email: {
-        //     $error: true,
-        //     $message: error.response.data.message // Adjust according to your API response structure
-        //   },
-        // })
         }
-
-
-      
         }
       }
     },

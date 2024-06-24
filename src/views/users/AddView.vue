@@ -10,32 +10,25 @@
             required
           ></v-text-field>
         </v-col>
-
         <v-col cols="12">
           <v-text-field
             v-model="email"
             label="E-mail"
             :error-messages="
-              v$.email.$error ? v$.email.$errors[0].$message : ''
-            "
+              v$.email.$error ? v$.email.$errors[0].$message : ''"
             required
           ></v-text-field>
           <span v-if="emailError" class="error" style="color:red;">{{emailError}}</span>
-
         </v-col>
-
         <v-col cols="12">
           <v-text-field
             v-model="password"
             label="Password"
-            :error-messages="
-              v$.password.$error ? v$.password.$errors[0].$message : ''
-            "
+            :error-messages="v$.password.$error ? v$.password.$errors[0].$message : ''"
             required
           ></v-text-field>
         </v-col>
       </v-row>
-
       <v-row>
         <v-col cols="12" class="text-center">
           <v-btn type="submit">Submit</v-btn>

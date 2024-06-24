@@ -33,7 +33,6 @@
     </v-container>
   </v-form>
 </template>
-  
   <script>
 import useVuelidate from "@vuelidate/core";
 import { required, email, minLength, maxLength } from "@vuelidate/validators";

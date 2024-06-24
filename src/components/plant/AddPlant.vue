@@ -17,8 +17,8 @@
                 required
                 @change="previewImage"
                 :error-messages="
-                v$.image.$error ? v$.image.$errors[0].$message : ''
-              "
+                 v$.image.$error ? v$.image.$errors[0].$message : ''
+                " 
                 class="w-100"
               ></v-file-input>
               <v-img :src="imagePreview" v-if="imagePreview" class="mt-3" height="100" contain></v-img>

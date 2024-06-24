@@ -140,16 +140,8 @@ import Cookies from 'js-cookie';
             console.log('Validation error:', error.response.data.message);
 
             if (error.response && error.response.status === 422) {
-        // Server validation error handling
-        console.log('Validation error:', error.response.data.message);
         this.emailError=error.response.data.message;
-        // Example: Update Vuelidate error state for email field
-        // this.v$.$setErrors({
-        //   email: {
-        //     $error: true,
-        //     $message: error.response.data.message // Adjust according to your API response structure
-        //   },
-        // })
+
         }
 
 

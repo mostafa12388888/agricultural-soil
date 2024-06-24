@@ -18,8 +18,12 @@
         <td>{{ value.email }}</td>
         <td>
             <v-col cols="auto">
-              <v-btn :to="'/user/'+value.id+'/edit'" density="compact" class="mr-2" color="primary" icon="mdi-pencil"></v-btn>
-              <v-btn :to="'/user/'+value.id+'/delete'" density="compact" class="mr-2" color="error" icon="mdi-delete"></v-btn>
+              <v-btn :to="'/user/'+value.id+'/edit'" density="compact" class="mr-2" color="primary" icon="mdi-pencil">
+
+              </v-btn>
+              <v-btn :to="'/user/'+value.id+'/delete'" density="compact" class="mr-2" color="error" icon="mdi-delete">
+                
+              </v-btn>
               <v-btn :to="'/user/'+value.id" density="compact" color="success" icon="mdi-eye"></v-btn>
             </v-col>
 

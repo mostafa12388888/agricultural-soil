@@ -51,34 +51,39 @@
               </v-btn>
               <EditPlant @updatePlant="updateItem" :plant="plant" :index="key" :dialogs="activatorProps === key" @update:dialogs="setActivatorProps(key, $event)" />
 
-              <v-dialog v-model="dialog[key]" max-width="600">
-                <template v-slot:activator="{ on }">
-                  <v-btn
-                    color="error"
-                    icon
-                    v-tooltip:right="'Delete'"
-                    v-bind="on"
-                  >
-                    <v-icon>mdi-delete</v-icon>
-                  </v-btn>
-                </template>
+              <div class="pa-4 text-center">
+                <v-dialog v-model="dialog[key]" max-width="600">
+                  <template v-slot:activator="{ props: activatorProps }">
+                    <v-btn
+                      color="error"
+                      icon="mdi-delete"
+                      v-tooltip:right="'delete'"
+                      density="compact"
+                      class="mr-2"
+                      v-bind="activatorProps"
+                      @click="openDialog(key)"
+                    ></v-btn>
+                  </template>
 
-                <v-card prepend-icon="mdi-delete" title="Delete">
-                  <v-card-text>
-                    <v-row dense>
-                      <v-col class="text-center">
-                        <span>Are you sure you want to delete <h1>{{ plant.name }}?</h1></span>
-                      </v-col>
-                    </v-row>
-                  </v-card-text>
+                  <v-card prepend-icon="mdi-delete" title="Delete">
+                    <v-card-text>
+                      <v-row dense>
+                        <v-col class="text-center">
+                          <span>Are you sure you want to delete <h1>{{ plant.name }}?</h1></span>
+                        </v-col>
+                      </v-row>
+                    </v-card-text>
 
-                  <v-card-actions>
-                    <v-spacer></v-spacer>
-                    <v-btn text @click="closeDialog(key)">Close</v-btn>
-                    <v-btn @click="deletePlant(plant.id, key)" color="error" text>Delete</v-btn>
-                  </v-card-actions>
-                </v-card>
-              </v-dialog>
+                    <v-card-actions>
+                      <v-spacer></v-spacer>
+
+                      <v-btn text variant="plain" @click="closeDialog(key)">Close</v-btn>
+
+                      <v-btn @click="deletePlant(plant.id, key)" color="error" text variant="tonal">Delete</v-btn>
+                    </v-card-actions>
+                  </v-card>
+                </v-dialog>
+              </div>
             </v-card-actions>
           </v-card>
         </v-col>
@@ -112,8 +117,9 @@ export default {
     },
   },
   methods: {
-    updateItem(index, newItem) {
-      this.$set(this.plantData, index, newItem);
+    updateItem(index,val) {
+      this.plantData[index]=val
+      // this.$set(this.plantData, index, val);
     },
     openDialog(key) {
       this.dialog[key] = true;
