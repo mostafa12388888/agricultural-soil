@@ -16,15 +16,16 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      name: 'dashboard',
-      component: Dashboard,
-    },
-    {
       path: '/login',
       name: 'login',
       component: LogInView,
     },
+    {
+      path: '/',
+      name: 'dashboard',
+      component: Dashboard,
+    },
+    
     {
       path: '/admin',
       name: 'admin',
@@ -89,6 +90,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const token = Cookies.get('token');
   const isAuthenticated = !!token; // Check if token exists in cookies
+  console.log("isAuthenticated=>",isAuthenticated)
 
   if (to.matched.some(record => record.meta.requiresAuth)) {
     // Redirect to login if authentication is required but token is not present
@@ -97,6 +99,9 @@ router.beforeEach((to, from, next) => {
     } else {
       next();
     }
+  } else if (to.path === '/' && !isAuthenticated) {
+    next('/login');
+  
   } else if (to.path === '/login' && isAuthenticated) {
     // Redirect to dashboard if already authenticated and trying to access login
     next('/');
