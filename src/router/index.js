@@ -3,8 +3,11 @@ import Dashboard from '../views/DashboardView.vue';
 import LogInView from '../views/LogInView.vue';
 import AdminView from '../views/AdminView.vue';
 import AddAdminView from '../views/admins/AddView.vue';
+import EditAdmin from '../views/admins/EditView.vue';
+import ShowUser from '../views/admins/ShowUserView.vue';
 import UserView from '../views/UserView.vue';
 import AddUser from '../views/users/AddView.vue';
+import EditUser from '../views/users/EditView.vue';
 import PlantsView from '../views/PlantsView.vue';
 import Cookies from 'js-cookie';
 
@@ -34,6 +37,18 @@ const router = createRouter({
       meta: { requiresAuth: true }
     },
     {
+      path: '/admin/:id/edit',
+      name: 'EditAdmin',
+      component: EditAdmin,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/admin/:id',
+      name: 'ShowUser',
+      component: ShowUser,
+      meta: { requiresAuth: true }
+    },
+    {
       path: '/users',
       name: 'user',
       component: UserView,
@@ -43,6 +58,12 @@ const router = createRouter({
       path: '/users/add',
       name: 'AddUser',
       component: AddUser,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/user/:id/edit',
+      name: 'EditUser',
+      component: EditUser,
       meta: { requiresAuth: true }
     },
     {
