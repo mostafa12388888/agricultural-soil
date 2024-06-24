@@ -8,8 +8,8 @@
       <v-app-bar>
         <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
         <v-spacer />
-        <v-col lg="6" cols="12">
-          <v-form>
+        <v-col cols="6" >
+          <v-form >
             <v-text-field
               class="p-0 m-0 mt-6"
               full-width
@@ -22,12 +22,8 @@
           </v-form>
         </v-col>
         <v-spacer />
-
-
-        
             <v-btn
               id="menu-activator"
-              
             >
             <span style="cursor: pointer" v-bind="attrs" v-on="on">
                 <v-chip link>
