@@ -16,11 +16,12 @@
                 accept="image/*"
                 required
                 @change="previewImage"
-                :error-messages="
-                  v$.image.$error ? v$.image.$errors[0].$message : ''
-                "
+                
                 class="w-100"
               ></v-file-input>
+              <!-- :error-messages="
+                  v$.image.$error ? v$.image.$errors[0].$message : ''
+                " -->
               <v-img
                 :src="imagePreview"
                 v-if="imagePreview"
@@ -141,7 +142,7 @@ export default {
     const v$ = useVuelidate(
       {
         name: { required, minLength: minLength(3) },
-        image: { required },
+        // image: { required },
         soilHumidity: { required, numeric },
         humidity: { required, numeric },
         watering: { required, numeric },
@@ -187,7 +188,6 @@ export default {
           formData.append("watering", watering.value);
           formData.append("humidity", humidity.value);
           formData.append("name", name.value);
-          formData.append("image", image.value);
           formData.append("soilHumidity", soilHumidity.value);
 
           const result = await axios.post(`/plant-admin/${props.plant.id}`, formData, {
