@@ -54,16 +54,16 @@
   };
   
   // Y-axis configuration
-  const primaryYAxis = {
-    title: 'Values',
-    labelFormat: '{value}%',
-    interval: 10,
-    minimum: 0,
-    maximum: 100,
-    lineStyle: { width: 0 },
-    majorTickLines: { width: 0 },
-    minorTickLines: { width: 0 }
-  };
+//   const primaryYAxis = {
+//     title: 'Values',
+//     labelFormat: '{value}%',
+//     interval: 10,
+//     minimum: 0,
+//     maximum: 100,
+//     lineStyle: { width: 0 },
+//     majorTickLines: { width: 0 },
+//     minorTickLines: { width: 0 }
+//   };
   
   // Legend settings
   const legendSettings = {
