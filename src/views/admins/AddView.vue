@@ -83,7 +83,7 @@
   
   <script>
   import useVuelidate from '@vuelidate/core';
-  import { required, email, minLength, maxLength, url } from '@vuelidate/validators';
+  import { required, email, minLength, maxLength, url, numeric } from '@vuelidate/validators';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
@@ -108,7 +108,7 @@ import Cookies from 'js-cookie';
         password: { required, minLength: minLength(6), maxLength: maxLength(25) },
         address: {required,minLength:minLength(6)},
         photo:{required},
-      phone: {required,minLength:minLength(6)},
+      phone: {required,minLength:minLength(6)|numeric},
       };
     },
     methods: {

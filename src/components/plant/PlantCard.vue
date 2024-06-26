@@ -119,6 +119,7 @@ export default {
   methods: {
     updateItem(index,val) {
       this.plantData[index]=val
+      console.log(this.plantData[index])
       // this.$set(this.plantData, index, val);
     },
     openDialog(key) {

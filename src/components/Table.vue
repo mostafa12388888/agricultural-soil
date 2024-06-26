@@ -5,6 +5,7 @@
         <th v-if="admin">Photo</th>
         <th>Name</th>
         <th>Email</th>
+        <th v-if="!admin">Admin added</th>
         <th v-if="admin">Phone</th>
         <th v-if="admin">Status</th>
         <th v-if="admin">Address</th>
@@ -22,6 +23,7 @@
         </td>
         <td>{{ value.name }}</td>
         <td>{{ value.email }}</td>
+        <td v-if="!admin">{{ value.admin?.name??"" }}</td>
         <td v-if="admin">{{ value.phone }}</td>
         <td v-if="admin">
           <p class="status delivered">{{ value.status }}</p>

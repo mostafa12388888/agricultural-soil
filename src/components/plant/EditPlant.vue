@@ -11,17 +11,12 @@
             <v-col cols="12" md="4" sm="6">
               <v-file-input
                 v-model="image"
-                label="Upload Image*"
+                label="Upload Image"
                 prepend-icon="mdi-file"
                 accept="image/*"
-                required
                 @change="previewImage"
-                
                 class="w-100"
               ></v-file-input>
-              <!-- :error-messages="
-                  v$.image.$error ? v$.image.$errors[0].$message : ''
-                " -->
               <v-img
                 :src="imagePreview"
                 v-if="imagePreview"
@@ -33,13 +28,11 @@
             <v-col cols="12" md="4" sm="6">
               <v-text-field
                 label="Name *"
-                hint="Enter the required  Name"
+                hint="Enter the required Name"
                 persistent-hint
                 required
-                :error-messages="
-                  v$.name.$error ? v$.name.$errors[0].$message : ''
-                "
                 v-model="name"
+                :error-messages="v$.name.$error ? v$.name.$errors[0].$message : ''"
               ></v-text-field>
             </v-col>
             <v-col cols="12" md="4" sm="6">
@@ -49,9 +42,7 @@
                 persistent-hint
                 required
                 v-model="watering"
-                :error-messages="
-                  v$.watering.$error ? v$.watering.$errors[0].$message : ''
-                "
+                :error-messages="v$.watering.$error ? v$.watering.$errors[0].$message : ''"
                 type="number"
               ></v-text-field>
             </v-col>
@@ -60,13 +51,9 @@
                 label="Temperature*"
                 hint="Enter the required amount of Temperature"
                 persistent-hint
-                v-model="temperature"
-                :error-messages="
-                  v$.temperature.$error
-                    ? v$.temperature.$errors[0].$message
-                    : ''
-                "
                 required
+                v-model="temperature"
+                :error-messages="v$.temperature.$error ? v$.temperature.$errors[0].$message : ''"
                 type="number"
               ></v-text-field>
             </v-col>
@@ -76,10 +63,8 @@
                 hint="Enter the required amount of Humidity"
                 persistent-hint
                 required
-                :error-messages="
-                  v$.humidity.$error ? v$.humidity.$errors[0].$message : ''
-                "
                 v-model="humidity"
+                :error-messages="v$.humidity.$error ? v$.humidity.$errors[0].$message : ''"
                 type="number"
               ></v-text-field>
             </v-col>
@@ -90,11 +75,7 @@
                 persistent-hint
                 required
                 v-model="soilHumidity"
-                :error-messages="
-                  v$.soilHumidity.$error
-                    ? v$.soilHumidity.$errors[0].$message
-                    : ''
-                "
+                :error-messages="v$.soilHumidity.$error ? v$.soilHumidity.$errors[0].$message : ''"
                 type="number"
               ></v-text-field>
             </v-col>
@@ -104,9 +85,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn text variant="plain" @click="closeDialog">Close</v-btn>
-          <v-btn color="primary" text variant="tonal" @click="saveDialog"
-            >Save</v-btn
-          >
+          <v-btn color="primary" text variant="tonal" @click="saveDialog">Save</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -142,7 +121,6 @@ export default {
     const v$ = useVuelidate(
       {
         name: { required, minLength: minLength(3) },
-        // image: { required },
         soilHumidity: { required, numeric },
         humidity: { required, numeric },
         watering: { required, numeric },
@@ -188,18 +166,18 @@ export default {
           formData.append("watering", watering.value);
           formData.append("humidity", humidity.value);
           formData.append("name", name.value);
+          if (image.value) {
+            formData.append("image", image.value);
+          }
           formData.append("soilHumidity", soilHumidity.value);
 
-          const result = await axios.post(`/plant-admin/${props.plant.id}`, formData, {
-            headers,
-          });
+          const result = await axios.post(`/plant-admin/${props.plant.id}`, formData, { headers });
           if (result.status === 200) {
-            console.log("data=>",result.data);
             imagePreview.value = null;
             emit("updatePlant", props.index, result.data);
           }
         } catch (error) {
-          console.log(error);
+          console.error(error);
         }
         localDialog.value = false;
       }
